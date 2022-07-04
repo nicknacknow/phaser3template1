@@ -7,30 +7,66 @@ https://phasertutorials.com/phaser-leaderboard-with-user-authentication-using-no
 https://phaser.io/tutorials/getting-started-phaser3
 */
 
+//import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin'
+
 class Start extends Phaser.Scene {
     constructor() {
         super({
             key: 'Start'
         });
     }
-    preload() {
-        /*this.load.scenePlugin({
-            key: 'rexuiplugin',
-            url: "http://localhost:3000/assets/js/rexuiplugin.min.js",
-            sceneKey: 'rexUI'
-        })
 
-        this.load.plugin('rextexteditplugin', 'http://localhost:3000/assets/js/rextexteditplugin.min.js', true)*/
+    preload() {
+        this.load.html("loginform", "login.html");
     }
     create() {
-        this.message = this.add.text(640, 250, "hello", {
+        var element = this.add.dom(400,250).createFromCache("loginform");
+        element.addListener("click");
+        element.on("click", function(event) {
+            var target = event.target.name;
+            if (target == "loginButton") {
+                var username = this.getChildByName('username').value;
+                var password = this.getChildByName('password').value;
+
+                if ((username != '' && password != '') && username.length < 10) {
+                    // use ajax to validate username password
+                }
+            }
+            if (target == "createAccount") {
+                element.removeElement();
+            }
+        });
+
+        /*
+        this.add.text(200, 50, "LOGIN :", {
+            color: "#000000",
+            font: "26px monospace"
+        });
+
+        var userLabel = this.add.text(200, 100, "Input Username:", {
             color: "#000000",
             font: "18px monospace"
-        }).setOrigin(0.5);
+        });
 
-        /*this.message.setInteractive().on("pointerdown", () => {
-            this.rexUI.edit(text);
-        });*/
+        var usernameInput = this.add.text(350, 100, "user", {
+            color: "#000000",
+            font: "18px monospace"
+        });
+
+        this.input.keyboard.on("keydown", function(event) {
+            if (event.keyCode == 8 && usernameInput.text.length > 0) {
+                usernameInput.text = usernameInput.text.substr(0, usernameInput.text.length - 1);
+            }
+            else if (event.keyCode >= 48 && event.keyCode < 90) {
+                if (usernameInput.text.length < 10) {
+                    usernameInput.text += event.key;
+                }
+            }
+        });
+    */
+    }
+    update() {
+        //this.usernameInput.x = 5;
     }
 }
 
@@ -40,7 +76,7 @@ let config = {
     width: 800,
     height: 600,
     pixelArt: true,
-    backgroundColor: '#ffffff',
+    //backgroundColor: '#ffffff',
     dom: {
         createContainer: true
     },
