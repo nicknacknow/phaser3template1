@@ -25,8 +25,6 @@ class Start extends Phaser.Scene {
         this.load.html("loginform", "login.html");
         this.load.html("signupform", "signup.html");
         this.load.image("pagebg", "/assets/pagebg.jpg");
-
-        this.load.on("progress", (v)=>{console.log(v);});
     }
     create() {
         this.add.image(600, 400, "pagebg");
