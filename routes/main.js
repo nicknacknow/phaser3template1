@@ -14,13 +14,15 @@ router.post("/signup", passport.authenticate("signup", {session:false}), async (
     res.status(200).json({message: "signup successful"});
 });
 
+
 router.post("/login", async (req, res, next) => { 
     passport.authenticate("login", async (err, user, info) => {
         try{
             if (err || !user) {
-                console.log(err);
-                let error = new Error("[login] error occured");
-                return next(error);
+                if (!user) {
+                    return next("user was not found");
+                }
+                return next(err);
             }
             req.login(user, {session: false}, async (error) => {
                 if (error) return next(error);
@@ -45,7 +47,9 @@ router.post("/login", async (req, res, next) => {
                 };
 
                 // send back the token to user
-                return res.status(200).json({token, refreshToken});
+                //return res.status(200).json({token, refreshToken});
+                // send back status
+                return res.status(200).json({status: "ok"});
             })
         } catch (error) {
             return next(error);
@@ -65,11 +69,12 @@ router.post("/logout", (req, res) => {
 });
 
 router.post("/token", (req, res) => {
-    let {email, refreshToken} = req.body;
-    console.log(email, refreshToken);
-    if ((refreshToken in tokenList) && (tokenList[refreshToken].email == email)) {
-        let body = {email, _id: tokenList[refreshToken]._id};
-        let token = jwt.sign({user: body}, process.env.TOP_SECRET_KEY, {expiresIn: 300});
+    let {refreshToken, email} = req.body;
+    
+    if ((refreshToken in tokenList) && email == tokenList[refreshToken].email) {
+        let _id = tokenList[refreshToken]._id;
+        let user = {email, _id};
+        let token = jwt.sign({user}, process.env.TOP_SECRET_KEY, {expiresIn: 300});
 
         // update jwt
         res.cookie("jwt", token);
@@ -87,7 +92,7 @@ module.exports = router;
 
 curl -X POST -H 'Content-Type: application/json' -d '"{\"email\":\"test5@test.com\",\"password\":\"1234\",\"name\":\"test5\"}"' http://localhost:3000/signup
 
-curl -X POST -H 'Content-Type: application/json' -d '"{\"email\":\"test5@test.com\",\"password\":\"1234\"}"' http://localhost:3000/signup
+curl -X POST -H 'Content-Type: application/json' -d '"{\"email\":\"test5@test.com\",\"password\":\"1234\"}"' http://localhost:3000/login
 
 curl -X POST -H 'Content-Type: application/json' -d '"{\"email\":\"test5@test.com\",\"score\":5000}"' http://localhost:3000/submit-score
 

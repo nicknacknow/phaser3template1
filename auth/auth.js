@@ -9,7 +9,7 @@ passport.use("signup", new localStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
-}, async (req, email, password, done) => {
+}, async (req, email, password, done) => { 
     try {
         let { name } = req.body;
         let user = await userModel.create({email, password, name});
