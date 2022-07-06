@@ -1,4 +1,8 @@
-import GameScene from "./game.js"
+import MenuScene from "./menu.js"
+import OptionsScene from "./options.js"
+
+// game scenes
+import StartGameScene from "./game/start.js"
 
 function getCookie(cname){
     let name = cname + "=";
@@ -57,8 +61,8 @@ class Start extends Phaser.Scene {
     
                         if (data.status == "ok") {
                             // successful log-in !
-                            self.scene.start("GameScene");
                             console.log("successful log-in");
+                            self.scene.start("MenuScene");
                             setInterval(function() {
                                 $.ajax({
                                     type: "POST",
@@ -68,7 +72,7 @@ class Start extends Phaser.Scene {
                                         email
                                     },
                                     success: (data) => {},
-                                    error: (xhr) => {
+                                    error: (xhr) => { // alrdy logged out so idk y
                                         $.ajax({
                                             method: "POST",
                                             url: "/logout"
@@ -153,7 +157,13 @@ let config = {
     dom: {
         createContainer: true
     },
-    scene: [Start, GameScene]
+    physics: {
+        default: "arcade",
+        arcade: {
+            debug: true
+        }
+    },
+    scene: [Start, MenuScene, OptionsScene, StartGameScene]
 };
 
 const game = new Phaser.Game(config);
