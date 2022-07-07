@@ -1,0 +1,164 @@
+{
+    "frames": [
+        {
+            "filename": "atlas_0",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_1",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 74,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_2",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 148,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_3",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 222,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_4",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 0,
+                "y": 100
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_5",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 74,
+                "y": 100
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_6",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 148,
+                "y": 100
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_7",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 222,
+                "y": 100
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_8",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 0,
+                "y": 200
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_9",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 74,
+                "y": 200
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_10",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 148,
+                "y": 200
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_11",
+            "frame": {
+                "w": 74,
+                "h": 100,
+                "x": 222,
+                "y": 200
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

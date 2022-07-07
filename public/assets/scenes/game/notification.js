@@ -5,6 +5,8 @@ class Notification {
     }
 
     notify(title, content_text) {
+        if (this.isNotifying) return;
+        this.isNotifying = true;
         var title = this.scene.add.text(-30, 25, title, {
             //color: "white",
             fontSize: 20
@@ -20,16 +22,18 @@ class Notification {
             }
         }).setDepth(5);
 
-        this.graphics.fillStyle(0x555555, 0.85);
+        this.graphics.fillStyle(0xB80F0A, 0.85);
         var back = this.graphics.fillRoundedRect(0 - bodyWidth, 20, bodyWidth, (title.height + content.height) * 1.5, 15).setDepth(5);
         content.text = ""; // super finecky but must use for text width etc
+        let self = this;
         this.scene.tweens.add({
             targets: back,
             x: 20 + bodyWidth,
             duration: 1250,
             ease: "Expo.easeOut",
             hold: 5000 + content_text.length * 75,
-            yoyo: true
+            yoyo: true,
+            onComplete: function() { self.isNotifying = false; }
         });
         this.scene.tweens.add({
             targets: [title,content],
@@ -49,10 +53,6 @@ class Notification {
                 await new Promise(r => setTimeout(r, 100));
             }
         })();
-    }
-
-    send(title, msg) {
-
     }
 }
 

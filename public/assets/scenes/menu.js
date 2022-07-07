@@ -58,7 +58,7 @@ class MenuScene extends Phaser.Scene {
             //color: "yellow",
             fontSize: 25,
             shadow: 0
-        }).setShadow(-2, 0, "yellow", 2);;
+        }).setShadow(-2, 0, "yellow", 2);
         pointer1.setVisible(false);
         pointer2.setVisible(false);
 
