@@ -10,9 +10,9 @@ class Alert {
         var graphics = this.scene.add.graphics();
         graphics.fillStyle(0x710C04, 0.85);
 
-        this.back = graphics.fillRoundedRect(10, this.scene.game.renderer.height, 500, 40, 15).setDepth(5);
-        this.exclamation = this.scene.add.text(20, this.scene.game.renderer.height, "!", { fontSize: 30 }).setDepth(5);
-        this.content = this.scene.add.text(50, this.scene.game.renderer.height + 7, message, { fontSize: 15 }).setDepth(5);
+        this.back = graphics.fillRoundedRect(10, this.scene.game.renderer.height, 500, 40, 15).setDepth(6);
+        this.exclamation = this.scene.add.text(20, this.scene.game.renderer.height, "!", { fontSize: 30 }).setDepth(6);
+        this.content = this.scene.add.text(50, this.scene.game.renderer.height + 7, message, { fontSize: 15 }).setDepth(6);
     
         // thes should not be created every alert, intead made in constructor & stored until use
         // for now here but when finished teening move
@@ -46,7 +46,7 @@ class Alert {
     stop() {
         if (this.stopping) return;
         this.stopping = true;
-        console.log("stpo");
+        
         let self = this;
         this.scene.tweens.add({
             targets: this.back,

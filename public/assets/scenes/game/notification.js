@@ -4,13 +4,13 @@ class Notification {
         this.graphics = scene.add.graphics();
     }
 
-    notify(title, content_text) {
+    notify(title, content_text, info) {
         if (this.isNotifying) return;
         this.isNotifying = true;
         var title = this.scene.add.text(-30, 25, title, {
             //color: "white",
             fontSize: 20
-        }).setDepth(5);
+        }).setDepth(6);
         var bodyWidth = title.width * 1.75;
         title.x = 0 - bodyWidth;
 
@@ -20,10 +20,10 @@ class Notification {
                 width: bodyWidth * 0.9,
                 useAdvancedWrap: true
             }
-        }).setDepth(5);
+        }).setDepth(6);
 
         this.graphics.fillStyle(0xB80F0A, 0.85);
-        var back = this.graphics.fillRoundedRect(0 - bodyWidth, 20, bodyWidth, (title.height + content.height) * 1.5, 15).setDepth(5);
+        var back = this.graphics.fillRoundedRect(0 - bodyWidth, 20, bodyWidth, (title.height + content.height) * 1.5, 15).setDepth(6);
         content.text = ""; // super finecky but must use for text width etc
         let self = this;
         this.scene.tweens.add({
@@ -50,7 +50,7 @@ class Notification {
             for (let i = 0; i < content_text.length; i++) {
                 let c = content_text.charAt(i);
                 content.text = content.text + c;
-                await new Promise(r => setTimeout(r, 100));
+                await new Promise(r => setTimeout(r, info.textDelay));
             }
         })();
     }

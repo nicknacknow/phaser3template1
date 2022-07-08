@@ -13,7 +13,7 @@ class InteractionManager {
     isDataInRange(data) {
         let obj = data.object;
         const pythag = (b1,b2) => Math.sqrt(Math.pow(b1.x - b2.x, 2) + Math.pow(b1.y - b2.y, 2));
-        if (pythag(obj.body, this.target.body) < data.radius) {
+        if (pythag(obj.body, this.target.sprite.body) < data.radius) {
             return true;
         } 
     }
@@ -40,6 +40,30 @@ class InteractionManager {
         if (data) {
             data.callback(data);
         }
+    }
+
+    makeObject(x, y, info) {
+        var interact = this.scene.physics.add.sprite(x, y).setOrigin(0,0).setImmovable(true);
+        // make it so this object can be edited in func possibly? doesn't matter
+        this.addObjectData({
+            name: info.name,
+            radius: info.radius,
+            object: interact,
+            callback: (data) => {
+                if (this.target.movement && this.target.movement.isSpaceDown()) {
+                    if (info.interact) {
+                        info.interact(data);
+                    }
+                }
+                else {
+                    if (info.inRange) {
+                        info.inRange(data);
+                    }
+                }
+            }
+        })
+
+        return interact;
     }
 }
 

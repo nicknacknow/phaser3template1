@@ -19,8 +19,9 @@ class MenuScene extends Phaser.Scene {
     }
     create() { // do pixel art for game ? 
         var width = this.game.renderer.width, height = this.game.renderer.height;
+        var background = this.add.rectangle(0, 0, width, height, 0).setScale(2);
         this.add.image(0, 0, "titlebg").setOrigin(.1, 0).setDepth(0);
-        var title = this.add.text(width / 2 - 75, height / 5, "title", {
+        var title = this.add.text(width / 2 - 175, height / 5, "< agent >", {
             fontSize: 70,
             shadow: 0
         }).setShadow(0, 0, "black", 5).setOrigin(0);
@@ -40,12 +41,12 @@ class MenuScene extends Phaser.Scene {
             repeatDelay: 100
         });
 
-        var play = this.add.text(width / 2 - 50, height / 2 - 50, "< play >", {
+        var play = this.add.text(width / 2 - 75, height / 2 - 50, "< play >", {
             fontSize: 30,
             shadow: 0
         });
 
-        var options = this.add.text(width / 2 - 75, height / 2 + 50, "< options >", {
+        var options = this.add.text(width / 2 - 100, height / 2 + 50, "< options >", {
             fontSize: 30,
             shadow: 0
         });

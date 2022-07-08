@@ -1,7 +1,8 @@
 class Movement{
-    constructor(scene, target) {
+    constructor(scene, target, enabled) {
         this.scene = scene;
         this.character = target;
+        this.enabled = enabled == null ? true : enabled;
 
         this.keyboard = this.scene.input.keyboard.addKeys("W, A, S, D, SPACE");
     }
@@ -11,6 +12,7 @@ class Movement{
     }
 
     onUpdate(dt) { // https://www.youtube.com/watch?v=55DzXMkCfVA
+        if (!this.enabled) return;
         if (this.keyboard.SPACE.isDown) {
             // spacebar for interact with nearby instances to player
             // create interaction class, allow objects to be accepted with interacion etc

@@ -150,8 +150,8 @@ class Start extends Phaser.Scene {
 let config = {
     type: Phaser.AUTO,
     parent: 'game',
-    width: 800,
-    height: 600,
+    width: 816,
+    height: 624,
     pixelArt: true,
     backgroundColor: '#ffffff',
     dom: {
