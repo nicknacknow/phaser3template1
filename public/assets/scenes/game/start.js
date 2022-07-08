@@ -109,7 +109,7 @@ class StartGameScene extends Phaser.Scene {
         this.cameras.main.once("camerafadeincomplete", (camera) => {
             delay(2000).then(() => {
                 //this.notification.notify("Welcome", "you are an assassin.\nGet started by reading the hitlist.");
-                this.notification.notify("Good morning !", "Use <WASD> to eat your breakfast...", {textDelay: 75});
+                this.notification.notify("Good morning !!!!", "Use <WASD> to eat your breakfast...", {textDelay: 75});
                 sprite.movement.enabled = true;
             });
         });
